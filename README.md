@@ -23,7 +23,9 @@
 
 ## Data Model
 
+<PIN>_<Center>_<Date>_<Start Time>_<Slot>
 
+<Slot>_<Center>_<DateTime>_<Reserved By>
  
 ## Non-functional Requirements
 

@@ -1,13 +1,14 @@
-package com.example.demo;
+package org.pg.cowin.dao.entity;
 
 import java.util.Date;
 import java.util.UUID;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
 @Entity
 public class Slot {
-	@jakarta.persistence.Id
+	@Id
 	private UUID id;
 
 	private String location;

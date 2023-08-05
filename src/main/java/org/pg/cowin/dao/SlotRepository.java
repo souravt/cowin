@@ -1,9 +1,8 @@
-package com.example.demo;
+package org.pg.cowin.dao;
 
-import org.springframework.stereotype.Repository;
+import org.pg.cowin.dao.entity.Slot;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
 public interface  SlotRepository extends JpaRepository<Slot, Long> {
 
 }
