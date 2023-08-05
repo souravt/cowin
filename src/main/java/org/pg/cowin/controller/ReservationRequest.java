@@ -1,4 +1,4 @@
-package org.pg.cowin.service;
+package org.pg.cowin.controller;
 
 import java.util.Date;
 import java.util.UUID;
@@ -7,15 +7,15 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReservationRequest {
 
-	String centerId;
+	String vaxCenterId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy")
-	Date timeSlot;
+	Date vaxDate;
 	
-	String personId;
+	String citizenId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy hh:mm:ss.SSS")
-	Date requestedTime;
+	Date requestTs;
 	
 	@JsonFormat(pattern="dd-MM-yyyy hh:mm:ss.SSS")
 	Date requestReceivedAt;
@@ -29,36 +29,36 @@ public class ReservationRequest {
 		this.id = id;
 	}
 
-	public String getCenterId() {
-		return centerId;
+	public String getVaxCenterId() {
+		return vaxCenterId;
 	}
 
-	public void setCenterId(String centerId) {
-		this.centerId = centerId;
+	public void setVaxCenterId(String centerId) {
+		this.vaxCenterId = centerId;
 	}
 
-	public Date getTimeSlot() {
-		return timeSlot;
+	public Date getVaxDate() {
+		return vaxDate;
 	}
 
-	public void setTimeSlot(Date timeSlot) {
-		this.timeSlot = timeSlot;
+	public void setVaxDate(Date timeSlot) {
+		this.vaxDate = timeSlot;
 	}
 
-	public String getPersonId() {
-		return personId;
+	public String getCitizenId() {
+		return citizenId;
 	}
 
-	public void setPersonId(String personId) {
-		this.personId = personId;
+	public void setCitizenId(String personId) {
+		this.citizenId = personId;
 	}
 
-	public Date getRequestedTime() {
-		return requestedTime;
+	public Date getRequestTs() {
+		return requestTs;
 	}
 
-	public void setRequestedTime(Date requestedTime) {
-		this.requestedTime = requestedTime;
+	public void setRequestTs(Date requestTs) {
+		this.requestTs = requestTs;
 	}
 
 	public Date getRequestReceivedAt() {

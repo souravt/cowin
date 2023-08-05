@@ -1,12 +1,14 @@
-package org.pg.cowin.service;
+package org.pg.cowin.controller;
 
 import java.util.Date;
 import java.util.UUID;
 
+import org.pg.cowin.service.ReservationStatus;
+
 public class ReservationResponse {
-	UUID reservationId;	
-	ReservationStatus status;	
-    Date reservationTS;
+	UUID reservationId;			
+    Date reservationTs;
+    ReservationStatus status;
     
     public UUID getReservationId() {
 		return reservationId;
@@ -20,11 +22,11 @@ public class ReservationResponse {
 	public void setStatus(ReservationStatus status) {
 		this.status = status;
 	}
-	public Date getReservationTS() {
-		return reservationTS;
+	public Date getReservationTs() {
+		return reservationTs;
 	}
-	public void setReservationTS(Date reservationTS) {
-		this.reservationTS = reservationTS;
+	public void setReservationTs(Date reservationTS) {
+		this.reservationTs = reservationTS;
 	}	
 	
 }

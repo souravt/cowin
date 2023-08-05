@@ -3,7 +3,6 @@ package org.pg.cowin.dao;
 import java.util.Date;
 
 import org.pg.cowin.service.ReservationStatus;
-import org.springframework.stereotype.Service;
 
 
 public interface BookingRepository {

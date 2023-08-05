@@ -1,9 +1,9 @@
 package org.pg.cowin.controller;
 
+import java.util.Date;
 import java.util.UUID;
 
-import org.pg.cowin.service.ReservationRequest;
-import org.pg.cowin.service.ReservationResponse;
+import org.pg.cowin.service.AvailabilityService;
 import org.pg.cowin.service.ReservationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,16 +19,26 @@ public class ReservationController {
 	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
 
 	@Autowired
-	ReservationService service;
+	ReservationService reservationService;
 
-	@PostMapping(path = "/reserve", consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ReservationResponse send(@RequestBody ReservationRequest request) {
+	@Autowired
+	AvailabilityService availabilityService;
 
-		System.out.println("request:" + request);
+	@PostMapping(path = "/bookmyslot", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ReservationResponse bookSlot(@RequestBody ReservationRequest request) {
 		UUID uuid = UUID.randomUUID();
 		request.setId(uuid);
-		logger.info("Received new request", request.getCenterId());
-		return service.book(request);
+		request.setRequestReceivedAt(new Date());
+		return reservationService.book(request);
+	}
+
+	@PostMapping(path = "/findAvailability", consumes = MediaType.APPLICATION_JSON_VALUE)
+	public AvailabilityResponse findSlots(@RequestBody AvailabilityRequest request) {
+
+		UUID uuid = UUID.randomUUID();
+		request.setId(uuid);
+		request.setRequestReceivedAt(new Date());
+		return availabilityService.findAvailability(request);
 	}
 
 }
