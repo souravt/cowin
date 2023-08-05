@@ -18,4 +18,10 @@ public class AvailabilityImpl implements AvailabilityRepository{
 		return slots;
 	}
 
+	@Override
+	public void addSlots(String vaxCenterId, Date vaxDate, int additionalSlots) {
+		scheduler.addSlots(vaxCenterId, vaxDate, additionalSlots);
+
+	}
+
 }

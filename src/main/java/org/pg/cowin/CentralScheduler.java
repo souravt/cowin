@@ -17,6 +17,8 @@ public class CentralScheduler {
 
 	private static CentralScheduler instance = null;
 
+	private static DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
 	public synchronized static CentralScheduler getInstance() {
 		if (instance == null) {
 			instance = new CentralScheduler();
@@ -25,10 +27,20 @@ public class CentralScheduler {
 	}
 
 	private CentralScheduler() {
-		schedulers.put(getKey("KA-001", new Date()), new CenterReservationScheduler("KA-001", "05-08-2023", 10));
-		schedulers.put(getKey("KA-001", getDate("06-08-2023")),
+		this.schedulers.put(getKey("KA-001", new Date()), new CenterReservationScheduler("KA-001", "05-08-2023", 10));
+		this.schedulers.put(getKey("KA-001", getDate("06-08-2023")),
 				new CenterReservationScheduler("KA-001", "06-08-2023", 2));
-		schedulers.put(getKey("KA-002", new Date()), new CenterReservationScheduler("KA-0012", "05-08-2023", 5));
+		this.schedulers.put(getKey("KA-002", new Date()), new CenterReservationScheduler("KA-0012", "05-08-2023", 5));
+	}
+
+	public void addSlots(String centerId, Date date, int additionalSlots) {
+		String key = getKey(centerId, date);
+		if (this.schedulers.containsKey(key)) {
+			CenterReservationScheduler sch = this.schedulers.get(key);
+			additionalSlots = sch.getMaxSlots() + additionalSlots;
+		}
+		this.schedulers.put(key, new CenterReservationScheduler(centerId, dateFormat.format(date), additionalSlots));
+
 	}
 
 	public BookingStatus book(String centerId, Date timestamp, String person) {
@@ -47,7 +59,7 @@ public class CentralScheduler {
 		// TODO : Add all slots for the day
 		Collection<ScheduledSlot> slots = new ArrayList<ScheduledSlot>();
 		ScheduledSlot slot = new ScheduledSlot();
-		//TODO : Fix timing
+		// TODO : Fix timing
 		slot.setStartTime(timestamp);
 		slot.setEndTime(timestamp);
 		slot.setTotalSlots(scheduler.getMaxSlots());
@@ -59,7 +71,6 @@ public class CentralScheduler {
 	}
 
 	private String getKey(String centerId, Date timestamp) {
-		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		String date = dateFormat.format(timestamp);
 		return centerId + "_" + date;
 	}
@@ -68,7 +79,6 @@ public class CentralScheduler {
 		try {
 			return new SimpleDateFormat("dd-MM-yyyy").parse(stringStr);
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
