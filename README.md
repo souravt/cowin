@@ -40,6 +40,17 @@ Logic data model consists of few entities with ability to assign vaccination slo
 
 ![Data Model](resources/image/Data_Model.png "Data Model")
 
+ 
+### Solution Design Decisions
+
+
+| Sl No	   | Decision | Rationale | Alternatives | Notes |
+| -------- | -------  | -------   | -------      | ------- |
+| 1		   | Language - Java   | Easy to start , enterprise grade| Python, Golang, NodeJs | |
+| 2		   | Microservice, EDA as architecture patterns | Horizontal Scalability| Monolith | |
+| 3		   | Redis as In-Memory database | Low latency, fast , high throughput| RDBMS, NoSQL | Data needs to be persisted |
+
+
 ### API Documentation
 
 Following APIs would be implemented as designed part of this exercise :
@@ -48,13 +59,7 @@ Following APIs would be implemented as designed part of this exercise :
 
 ![OpenAPI Documentation](./resources/image/OpenAPI.png "API Documentation")
 
- 
-### Solution Design Decisions
 
-
-| Sl No	   | Decision | Rationale | Alternatives | Notes |
-| -------- | -------  | -------   | -------      | ------- |
-| 1		   | Language - Java   | Easy to start , enterprise grade| Python, Golang, NodeJs | |
 
 
 
