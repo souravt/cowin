@@ -3,20 +3,19 @@ package org.pg.cowin.controller;
 import java.util.Date;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.antlr.v4.runtime.misc.NotNull;
 
-import jakarta.validation.constraints.NotNull;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReservationRequest {
 
-	@NotNull
+	
 	String vaxCenterId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy")
-	@NotNull
+	
 	Date vaxDate;
 	
-	@NotNull
 	String citizenId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy hh:mm:ss.SSS")
