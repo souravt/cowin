@@ -121,7 +121,7 @@ While developing this application and ensuring basics like unit testing, static 
 
 A performance test suite using JMeter is designed up-front for continuous validation.
 
-Test Script  : ![Performance Test Script](./resources/Performance_Test_Script.xml "Performance Test Script")
+Test Script  : ![Performance Test Script](./resources/CoWin_API.jmx "Performance Test Script")
 
 ### Goals :
 
