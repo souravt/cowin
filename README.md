@@ -69,7 +69,7 @@ Queue Consumer
 			- If not slots are available , stop reading further message. Do not acknowledge
 ```
 
-#### Possible solutions
+#### Considerations for Possible solutions
 
 ##### TPS 
 
