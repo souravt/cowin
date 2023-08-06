@@ -2,6 +2,26 @@
 
 This project develop a basic working component of required to develop India's famous Cowin application. Objective of this application is to develop core APIs and demonstrate capabilities required and potential challenges.
 
+## Content
+
+  * [Requirements](#requirements)
+    + [Use Cases](#use-cases)
+    + [Non-functional Requirements](#non-functional-requirements)
+  * [Architecture](#architecture)
+    + [Application Architecture](#application-architecture)
+    + [Data Architecture](#data-architecture)
+    + [Solution Design Decisions](#solution-design-decisions)
+    + [API Documentation](#api-documentation)
+  * [How to Build and Run?](#how-to-build-and-run)
+    + [Build Source Code](#build-project)
+    + [Build Docker Container](#build-docker-container)
+    + [Run Docker Container](#run-container) 
+  * [Performance Test](#performance-test)
+    + [Performance Goals](#performance-goals)
+    + [Scaling to 4500 Transactions per second](#scaling-to-4500-transactions-per-second)
+  * [List of Tasks](#project-tasks)
+
+
 
 ## Requirements
 
@@ -30,8 +50,33 @@ A live dashboard and constantly updated available number of slots needs to be tr
 
 ![Application Architecture](./resources/image/Application_Architecture.png "Application Architecture")
 
+### Internal Data Structure
+
+Ensuring number of accepted bookings are exactly same as available slots even during highly concurrent asynchronous bookings.
+
+#### Logic for booking a slot
+
+```
+Add to Queue
+	-	Find out vax center id and slot start time
+	- 	Add to the queue with (center_id + slot_start_time) as key, Object [center_id,slot_start_time, citizen id]
+	
+Queue Consumer
+	-  Consumes one message at at time from a queue
+	-  Performs Validation - Has the citizen already booked a slot or recently vaccinated?
+		- If yes, send a rejection message. move to the next message
+		- If no, check if any slots are available. If yes, book one and send confirmation message
+			- If not slots are available , stop reading further message. Do not acknowledge
+```
+
+#### Possible solutions
 
 
+| Sl No	   | Option | Pros | Cons | Notes |
+| -------- | -------  | -------   | -------      | ------- |
+| 1		   | Message Queues - RabbitMQ, ActiveMQ   | |  | |
+| 2		   | Redis Streams   | |  | |
+| 3 	   | ACID-compliant Database   | |  | |
 
 
 ### Data Architecture
@@ -100,19 +145,7 @@ curl http://localhost:9091/ping
 
 One should receive a response "Pong". Bingo!
 
-## Tasks
-- [x] Setup Environment (Source Control, IDE, Build, Project Scaffolding)
-- [x] Design APIs using OpenAPI
-- [x] Develop working APIs for registration, search for available slots and slot booking
-- [x] Build, Deploy and Run 
-- [x] Build performance test suit to benchmark performance
-- [] Redis integration
-- [] Messaging integration
-- [] Add Authentication
-- [x] Logging
-- [] Error handling
-- [] Notification confirmation
-- [] Isolate services to scale
+
 
 
 ## Performance Test
@@ -123,7 +156,7 @@ A performance test suite using JMeter is designed up-front for continuous valida
 
 Test Script  : ![Performance Test Script](./resources/CoWin_API.jmx "Performance Test Script")
 
-### Goals :
+### Performance Goals
 
 1. Zero server internal error (except of building back pressure)
 2. Response time 99% percentile <50 milliseconds
@@ -142,7 +175,19 @@ Memory: 422 MB
 
 
  
-
+## Project Tasks
+- [x] Setup Environment (Source Control, IDE, Build, Project Scaffolding)
+- [x] Design APIs using OpenAPI
+- [x] Develop working APIs for registration, search for available slots and slot booking
+- [x] Build, Deploy and Run 
+- [x] Build performance test suit to benchmark performance
+- [] Redis integration
+- [] Messaging integration
+- [] Add Authentication
+- [x] Logging
+- [] Error handling
+- [] Notification confirmation
+- [] Isolate services to scale
 
 
  
