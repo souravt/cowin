@@ -89,7 +89,7 @@ curl http://localhost:9091/ping
 
 One should receive a response "Pong". Bingo!
 
-### Tasks
+## Tasks
 - [x] Setup Environment (Source Control, IDE, Build, Project Scaffolding)
 - [x] Design APIs using OpenAPI
 - [x] Develop working APIs for registration, search for available slots and slot booking
@@ -102,6 +102,24 @@ One should receive a response "Pong". Bingo!
 - [x] Logging
 - [] Error handling
 - [] Notification confirmation
+
+
+## Performance Test Results
+
+While developing this application and ensuring basics like unit testing, static code analysis and consistent application architecture, once of the most crucial aspect is ability to scale and perform without any performance degradation.
+
+A performance test suite using JMeter is designed upfront to continuously validation.
+
+### Goals :
+
+1. Zero server internal error (except of building back pressure)
+2. Response time 99% percentile <50 milliseconds
+3. Ability to horizontally scale
+
+###(In Memory DB - H2) (06-Aug-2023)
+![Performance Test Results](./resources/image/Test_Result_20000.png "Performance Test Results")
+
+
 
  
 
