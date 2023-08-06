@@ -115,11 +115,13 @@ One should receive a response "Pong". Bingo!
 - [] Isolate services to scale
 
 
-## Performance Test Results
+## Performance Test
 
 While developing this application and ensuring basics like unit testing, static code analysis and consistent application architecture, once of the most crucial aspect is ability to scale and perform without any performance degradation.
 
 A performance test suite using JMeter is designed up-front for continuous validation.
+
+Test Script  : ![Performance Test Script](./resources/Performance_Test_Script.xml "Performance Test Script")
 
 ### Goals :
 
