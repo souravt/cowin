@@ -49,6 +49,13 @@ Following APIs would be implemented as designed part of this exercise :
 ![OpenAPI Documentation](./resources/image/OpenAPI.png "API Documentation")
 
  
+### Solution Design Decisions
+
+
+| Sl No	   | Decision | Rationale | Alternatives | Notes |
+| -------- | -------  | -------   | -------      | ------- |
+| 1		   | Language - Java   | Easy to start , enterprise grade| Python, Golang, NodeJs | |
+
 
 
 ## How to Build and Run?
