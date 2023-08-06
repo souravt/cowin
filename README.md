@@ -28,9 +28,9 @@ Key functionality of this application is ability to search and book a slot. It i
 
 A live dashboard and constantly updated available number of slots needs to be transparently available to the users. Once successfully booked, users can be notified through sms/whatsapp.
 
-![Application Architecture](resources/image/Application Architecture.png "Application Architecture")
+![Application Architecture](./resources/image/Application_Architecture.png "Application Architecture")
 
-![Application Architecture](resources/image/Application Architecture.png)
+
 
 
 
@@ -38,7 +38,7 @@ A live dashboard and constantly updated available number of slots needs to be tr
 
 Logic data model consists of few entities with ability to assign vaccination slots for given vax center, date/time and ability for a person to book or cancel.
 
-![Data Model](resources/image/Data Model.png "Data Model")
+![Data Model](resources/image/Data_Model.png "Data Model")
 
 ### API Documentation
 
