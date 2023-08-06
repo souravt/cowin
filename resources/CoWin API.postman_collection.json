@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "7472e89b-72b6-4fd2-9b96-51b43402533f",
+		"name": "CoWin API",
+		"description": "API Documentation for CoWin ([https://www.cowin.gov.in/home](https://www.cowin.gov.in/home)) like functionalities to register for a vaccination slots at India demography scale.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28972773"
+	},
+	"item": [
+		{
+			"name": "Register a Vax Center",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaxCenterId\":\"KA-002\",\r\n    \"pinCode\":\"560001\",\r\n    \"address\":\"No 5, 3rd Floor, Annex Building No.3, Office Of The Executive Engineer, Hudson Circle, Bangalore - 560002\",\r\n    \"status\":\"active\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/registerCenter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"registerCenter"
+					]
+				},
+				"description": "Register a new vaccination center.\n\n### Request Parameters\n\n- Unique Vaccination Center Id\n- PIN Code\n- Address\n    \n\n### Request Parameters\n\nStatus (SUCCESS | FAILURE)"
+			},
+			"response": []
+		},
+		{
+			"name": "Find Vax Centres By PinCode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pinCode\":\"560001\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/findCentresByPincode",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findCentresByPincode"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Slots by Vax Center and Date",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaxCenterId\":\"KA-002\",\r\n    \"vaxDate\":\"06-08-2023\",\r\n    \"slotsAdded\":10\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/addSlots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addSlots"
+					]
+				},
+				"description": "### Request Parameters\n\n- Vaccination Center Id\n- Date\n- Number of Slots\n    \n\n### Request Parameters\n\n- Status (SUCCESS | FAILURE)"
+			},
+			"response": []
+		},
+		{
+			"name": "Find Slot Availability By Date and Vax Center Id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaxCenterId\":\"KA-002\",\r\n    \"vaxDate\":\"06-08-2023\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/findAvailability",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"findAvailability"
+					]
+				},
+				"description": "Seach for availability by Vax center id and date.  \n\n### Request Parameters\n\n- Vaccination Center Id\n- Date\n    \n\n### Request Parameters\n\n- List of slots with date, number of slots and availability"
+			},
+			"response": []
+		},
+		{
+			"name": "Book a Slot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"vaxCenterId\":\"KA-002\",\r\n    \"vaxDate\":\"05-08-2023\",\r\n    \"citizenId\":\"12345\",\r\n    \"requestTs\":\"05-08-2023 22:54:01.754\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/bookmyslot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookmyslot"
+					]
+				},
+				"description": "Book a slot for vax. Usually this step is followed after searching for availability.\n\n### Request Parameters\n\n- Vaccination Center Id\n- Date\n- Citizen Identifier\n    \n\n### Request Parameters\n\n- Status (SUCCESS | FAILURE)\n- Reservation Id"
+			},
+			"response": []
+		}
+	]
+}

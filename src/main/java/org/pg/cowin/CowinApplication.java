@@ -9,5 +9,4 @@ public class CowinApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CowinApplication.class, args);
 	}
-
 }
