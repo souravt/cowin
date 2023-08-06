@@ -10,6 +10,8 @@ Following APIs would be implemented as designed part of this exercise :
 
 [APIs to build using OpenAPI Specs](https://documenter.getpostman.com/view/28972773/2s9XxyRtkk)
 
+![OpenAPI Documentation](./resources/image/OpenAPI.png "API Documentation")
+
 ## Use cases 
 
 #### 1. Search for Available Slots 
@@ -87,8 +89,6 @@ One should receive a response "Pong". Bingo!
 - [] Add Authentication
 - [x] Logging
 - [] Error handling
-- [] Build Support for multiple time windows per day
-- [] Build UI
 - [] Notification confirmation
 
  
