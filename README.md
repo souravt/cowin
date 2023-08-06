@@ -3,8 +3,34 @@
 This project develop a basic working component of required to develop India's famous Cowin application. Objective of this application is to develop core APIs and demonstrate capabilities required and potential challenges.
 
 
+## Requirements
 
-## API Documentation
+### Use Cases
+
+1. Search for Available Slots : Finds available slots for given location and date
+2. Reserve a slot for the given location, date and user. Once booked user needs to be notified and available slots to be decremented
+3. Admin - Register Vax centers, add/modify slots
+4. View number of bookings per day across vax centers, Generate drill-down reports
+
+### Non-functional Requirements
+
+1. Scale for 3000 requests per second
+2. Latency <30 ms
+3. Application state needs to be consistent
+4. A single user should not be allowed more than 1 booking
+5. Application needs to be secured
+
+## Architecture
+
+### Application Architecture
+
+Key functionality of this application is ability to search and book a slot. It is expected as slots open up at certain time during the day, burst of user requests are expected and slot booking needs to be fair and quick.
+
+A live dashboard and constantly updated available number of slots needs to be transparently available to the users. Once successfully booked, users can be notified through sms/whatsapp.
+
+![Application Architecture](./resources/image/Application Architecture.png "Application Architecture")
+
+### API Documentation
 
 Following APIs would be implemented as designed part of this exercise :
 
@@ -12,32 +38,8 @@ Following APIs would be implemented as designed part of this exercise :
 
 ![OpenAPI Documentation](./resources/image/OpenAPI.png "API Documentation")
 
-## Use cases 
-
-#### 1. Search for Available Slots 
-	1. Input : Location, Date
-	2. Output : List of available slots (Start time, End time, Centre Id, Total Slots, Available Slots)
-
-#### 2. Reserve a slot 
-	1. Input : Slot, User Info
-	2. Output : Reservation Id, Status
-
-
-#### 3. Admin - Add/Modify Schedule
-	1. Input : Location, Date, Number of Slots
-	2. Output : Status
-
-#### 4. View Current Stats
-	View total number of bookings with ability to aggregate
-	
-#### 5. Register a center
-	Register a vaccination center with PIN, Center Id and Address
-
-
  
-## Non-functional Requirements
 
-1. Scale for 3000 requests per second
 
 ## How to Build and Run?
 
