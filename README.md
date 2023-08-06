@@ -76,18 +76,20 @@ curl http://localhost:9091/ping
 One should receive a response "Pong". Bingo!
 
 ### Tasks
-- [x] Setup Repo and IDE
-- [x] Design APIs
+- [x] Setup Environment (Source Control, IDE, Build, Project Scaffolding)
+- [x] Design APIs using OpenAPI
 - [x] Develop working APIs for registration, search for available slots and slot booking
-- [x] Build, Deploy and Run
+- [x] Build, Deploy and Run 
 - [x] Build performance test suit to benchmark performance
 - [] Isolate services to scale
 - [] Redis and messaging integration
+- [] Messaging integration
 - [] Add Authentication
-- [] Logging
+- [x] Logging
 - [] Error handling
 - [] Build Support for multiple time windows per day
 - [] Build UI
+- [] Notification confirmation
 
  
 

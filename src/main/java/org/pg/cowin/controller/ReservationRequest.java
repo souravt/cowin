@@ -5,13 +5,18 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ReservationRequest {
 
+	@NotNull
 	String vaxCenterId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy")
+	@NotNull
 	Date vaxDate;
 	
+	@NotNull
 	String citizenId;
 	
 	@JsonFormat(pattern="dd-MM-yyyy hh:mm:ss.SSS")
