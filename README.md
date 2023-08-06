@@ -71,12 +71,38 @@ Queue Consumer
 
 #### Possible solutions
 
+##### TPS 
+
+30000 per second read
+3000 per second write 
+
+Redis and Postgres exhibits similar performance numbers for this kind of throughput. Details [here](https://www.cybertec-postgresql.com/en/postgresql-vs-redis-vs-memcached-performance/)
+
+##### Data Volume
+
+1 person record = 1 KB (estimated)
+1.4 billion = 1.4 Billion KB = 1.4 TB of data
+Postgres can handle this data volume. 
+Redis needs to be periodically written back to persistent store
+
+##### Queue Count
+Number of Vaccination centers * Dates
+(19,101 PINs spanning 154,725 post offices)
+Assuming 100,000*30 = 3,000,000
+Assuming 50 KB per queue = 150 GB of live data
+
+Redis would turn to be quite costly.
+
+##### Possible Architecture Options
+
+Combination of Message Queues and Database
 
 | Sl No	   | Option | Pros | Cons | Notes |
 | -------- | -------  | -------   | -------      | ------- |
-| 1		   | Message Queues - RabbitMQ, ActiveMQ   | |  | |
-| 2		   | Redis Streams   | |  | |
-| 3 	   | ACID-compliant Database   | |  | |
+| 1		   | Message Queues - RabbitMQ, ActiveMQ   |Fast, Can scale  | Needs distributed version | |
+| 2		   | Redis Streams   | Fast, support append-only|  Costly Scalability| |
+| 3 	   | ACID-compliant Database   | Fast, Simple|Performance can be slower for higher number of transactions | |
+| 4 	   | Key-Value NoSQL   | Fast, Scalable| May need to manage transactions | |
 
 
 ### Data Architecture
@@ -84,6 +110,7 @@ Queue Consumer
 Logic data model consists of few entities with ability to assign vaccination slots for given vax center, date/time and ability for a person to book or cancel.
 
 ![Data Model](resources/image/Data_Model.png "Data Model")
+
 
  
 ### Solution Design Decisions
